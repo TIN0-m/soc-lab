@@ -1,0 +1,16 @@
+// Member added to a privileged Active Directory group
+// MITRE ATT&CK: T1098 Account Manipulation (Persistence, Privilege Escalation)
+// Events: 4728 (global group), 4732 (domain local group), 4756 (universal group)
+let PrivilegedGroups = dynamic([
+    "Domain Admins", "Enterprise Admins", "Schema Admins", "Administrators",
+    "Account Operators", "Backup Operators", "Server Operators", "Group Policy Creator Owners"
+]);
+SecurityEvent
+| where EventID in (4728, 4732, 4756)
+| where TargetUserName in~ (PrivilegedGroups)
+| extend Member = coalesce(extract(@"CN=([^,]+)", 1, MemberName), MemberName, MemberSid)
+| project TimeGenerated, Computer, EventID,
+          GroupName = TargetUserName,
+          Member, MemberSid,
+          ChangedBy = SubjectAccount,
+          ChangedByLogonId = SubjectLogonId

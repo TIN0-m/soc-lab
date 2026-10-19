@@ -1,0 +1,5 @@
+build/*.log
+*.env
+secrets/
+evidence-raw/
+notes/job-market-analysis-*.md
