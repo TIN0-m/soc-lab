@@ -23,6 +23,8 @@ Analyst laptop ──Tailscale (RDP only)──► Azure, South Africa North
                                           └─ law-soclab ─► Microsoft Sentinel
 ```
 
+**Proof it ran:** [evidence/](evidence/) has the Sentinel query results (19,196 Windows security events and Sysmon activity from both machines), the live detection rule, and screenshots.
+
 A plain-language map of every component is in [notes/lab-map.md](notes/lab-map.md). The fictional company's onboarding pack (people, assets, escalation, known risks) is in [notes/onboarding-lowveld-logistics.md](notes/onboarding-lowveld-logistics.md).
 
 ## Detections
@@ -46,6 +48,7 @@ More detections follow the planted weaknesses: password spraying, Kerberoasting,
 build/          numbered build scripts (bash + Azure CLI) and a write-up for each step
 build/scripts/  PowerShell run on the servers, plus ingestion and KQL helpers
 detections/     one folder per detection: the KQL and the script that deploys it
+evidence/       query results and screenshots showing the lab running
 notes/          lab map and the fictional company's onboarding pack
 ```
 
