@@ -71,10 +71,10 @@ The rule from [`detections/privileged-group-change/`](../detections/privileged-g
 | Enabled | Yes |
 | Severity | High |
 | Runs every | 5 minutes, looking back 10 minutes |
-| Creates an incident | Yes |
+| Creates an incident | Yes, grouped: alerts with the same accounts and host within 1 hour join one incident (tuned 26 October after the first test opened a duplicate) |
 | MITRE ATT&CK | Persistence, Privilege Escalation · T1098 Account Manipulation |
 
-No privileged group change has happened in the lab yet, so the rule has not fired. Testing it with a simulated attacker is the first exercise.
+**It fired.** On 25 October a simulated attacker added a Sales user to Domain Admins at 15:05:55 UTC, and Sentinel opened a High incident at 15:16:09, about 10 minutes later. The full investigation is in [investigations/01-privileged-group-change](../investigations/01-privileged-group-change/).
 
 ## 5. Locked down: no public IPs, no inbound internet
 

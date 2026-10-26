@@ -38,11 +38,15 @@ print(json.dumps({
       {"entityType": "Account", "fieldMappings": [{"identifier": "FullName", "columnName": "ChangedBy"}]},
       {"entityType": "Host", "fieldMappings": [{"identifier": "FullName", "columnName": "Computer"}]}
     ],
+    # Tuned 26 Oct 2026 after the first test: the 10-minute look-back on a 5-minute schedule
+    # catches each event in two runs, which opened two incidents for one change. Grouping
+    # alerts with the same accounts and host for an hour folds the repeat into one incident,
+    # while keeping the look-back wide enough for late-arriving logs.
     "incidentConfiguration": {
       "createIncident": True,
       "groupingConfiguration": {
-        "enabled": False, "reopenClosedIncident": False,
-        "lookbackDuration": "PT5H", "matchingMethod": "AllEntities"
+        "enabled": True, "reopenClosedIncident": False,
+        "lookbackDuration": "PT1H", "matchingMethod": "AllEntities"
       }
     }
   }

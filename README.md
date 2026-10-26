@@ -33,7 +33,13 @@ A plain-language map of every component is in [notes/lab-map.md](notes/lab-map.m
 |---|---|---|
 | [Member added to a privileged AD group](detections/privileged-group-change/) | T1098 Account Manipulation | Windows events 4728, 4732, 4756 for Domain Admins, Enterprise Admins and other privileged groups. Deployed as a Sentinel scheduled analytics rule. |
 
-More detections follow the planted weaknesses: password spraying, Kerberoasting, AS-REP roasting and misuse of a service account.
+## Investigations
+
+| # | Case | Outcome |
+|---|---|---|
+| 01 | [Sales user added to Domain Admins](investigations/01-privileged-group-change/) | Detected in 10 minutes, contained, escalated; rule tuned to stop duplicate incidents |
+
+More follow the planted weaknesses: password spraying, Kerberoasting, AS-REP roasting and misuse of a service account.
 
 ## Design choices worth knowing
 
@@ -49,9 +55,10 @@ build/          numbered build scripts (bash + Azure CLI) and a write-up for eac
 build/scripts/  PowerShell run on the servers, plus ingestion and KQL helpers
 detections/     one folder per detection: the KQL and the script that deploys it
 evidence/       query results and screenshots showing the lab running
+investigations/ one folder per case: timeline, queries, verdict, containment, escalation
 notes/          lab map and the fictional company's onboarding pack
 ```
 
 ## Status
 
-Built 15 and 16 October 2026. Attack simulations and investigation write-ups are in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
+Built 15 and 16 October 2026. First investigation written up on 26 October 2026; more in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
