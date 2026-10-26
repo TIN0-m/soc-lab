@@ -1,0 +1,17 @@
+// Password spraying: one source host failing logons against many different accounts.
+// MITRE ATT&CK: T1110.003 Brute Force: Password Spraying (Credential Access)
+//
+// Event 4625 is a failed logon. The spray signature is many DISTINCT target
+// accounts failing from one source in a short window. One account failing many
+// times is a lockout, not a spray, which is why this counts distinct accounts
+// (dcount) rather than raw failures.
+SecurityEvent
+| where EventID == 4625
+| summarize
+    FailedAttempts = count(),
+    DistinctAccounts = dcount(TargetUserName),
+    AccountsTargeted = make_set(TargetUserName, 100),
+    StartTime = min(TimeGenerated),
+    EndTime = max(TimeGenerated)
+    by SourceHost = Computer
+| where DistinctAccounts >= 5

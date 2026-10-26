@@ -32,14 +32,16 @@ A plain-language map of every component is in [notes/lab-map.md](notes/lab-map.m
 | Detection | ATT&CK | Logic |
 |---|---|---|
 | [Member added to a privileged AD group](detections/privileged-group-change/) | T1098 Account Manipulation | Windows events 4728, 4732, 4756 for Domain Admins, Enterprise Admins and other privileged groups. Deployed as a Sentinel scheduled analytics rule. |
+| [Password spray: one host failing against many accounts](detections/password-spray/) | T1110.003 Password Spraying | Event 4625 grouped by source host; fires when one host fails against 5+ distinct accounts in the window. |
 
 ## Investigations
 
 | # | Case | Outcome |
 |---|---|---|
 | 01 | [Sales user added to Domain Admins](investigations/01-privileged-group-change/) | Detected in 10 minutes, contained, escalated; rule tuned to stop duplicate incidents |
+| 02 | [Password spray from a workstation](investigations/02-password-spray/) | Found by hunting (no rule existed); two accounts compromised, contained; a detection rule was then written and deployed |
 
-More follow the planted weaknesses: password spraying, Kerberoasting, AS-REP roasting and misuse of a service account.
+More follow the planted weaknesses: Kerberoasting, AS-REP roasting and misuse of a service account.
 
 ## Design choices worth knowing
 
