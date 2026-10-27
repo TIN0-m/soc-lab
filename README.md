@@ -63,4 +63,4 @@ notes/          lab map and the fictional company's onboarding pack
 
 ## Status
 
-Built 15 and 16 October 2026. First investigation written up on 26 October 2026; more in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
+Built 15 and 16 October 2026. Two investigations written up on 25 and 26 October 2026, each with a detection rule; more in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
