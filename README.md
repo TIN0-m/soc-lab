@@ -39,7 +39,7 @@ A plain-language map of every component is in [notes/lab-map.md](notes/lab-map.m
 
 ## How alerts are worked
 
-Every alert is triaged against a written [triage playbook](TRIAGE-PLAYBOOK.md): a 7-step flow, the evidence rules, and the three pivots (process tree, command line, Azure Activity Log). Fast Tier 1 calls are recorded in the [shift log](shift-log.md); the deeper cases get a full investigation below.
+Every alert is triaged against a written [triage playbook](TRIAGE-PLAYBOOK.md): a 7-step flow, the evidence rules, and the three pivots (process tree, command line, Azure Activity Log). Each alert worked is written up below so the reasoning can be followed end to end.
 
 ## Investigations
 
@@ -48,6 +48,11 @@ Every alert is triaged against a written [triage playbook](TRIAGE-PLAYBOOK.md): 
 | 01 | [Sales user added to Domain Admins](investigations/01-privileged-group-change/) | Detected in 10 minutes, contained, escalated; rule tuned to stop duplicate incidents |
 | 02 | [Password spray from a workstation](investigations/02-password-spray/) | Found by hunting (no rule existed); two accounts compromised, contained; a detection rule was then written and deployed |
 | 03 | [Security log cleared: authorised or breach?](investigations/03-security-log-cleared/) | Investigated across endpoint and cloud; determined benign true positive (authorised admin via Azure Run Command), proven with the Azure Activity Log |
+| 04 | [Dormant account re-enabled](investigations/04-dormant-account-reenabled/) | Benign positive; a disabled account switched back on, confirmed authorised |
+| 05 | [Malware detection on a workstation](investigations/05-eicar-malware/) | Benign positive; the threat name (EICAR) identified it as a harmless AV test file, already handled |
+| 06 | [Brute force against one account](investigations/06-brute-force-single-account/) | True positive that **failed**; 15 attempts in 21s, no successful logon, no compromise |
+| 07 | [Failed logons for a service account](investigations/07-service-account-failed-logons/) | Benign; a service account failing from the DC, a stale credential rather than an attack |
+| 08 | [User added to a privileged group](investigations/08-backup-operators-change/) | High until proven; a SYSTEM-initiated group change confirmed authorised via the Azure Activity Log |
 
 More follow the planted weaknesses: Kerberoasting, AS-REP roasting and misuse of a service account.
 
@@ -68,9 +73,8 @@ evidence/       query results and screenshots showing the lab running
 investigations/ one folder per case: timeline, queries, verdict, containment, escalation
 notes/          lab map and the fictional company's onboarding pack
 TRIAGE-PLAYBOOK.md   step-by-step alert triage flow and golden rules
-shift-log.md         Tier 1 triage log (fast calls); investigations/ holds the deep ones
 ```
 
 ## Status
 
-Built 15 and 16 October 2026. Five detection rules, three investigations and a shift log (25 to 28 October 2026), worked against a written triage playbook; more in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
+Built 15 and 16 October 2026. Five detection rules and eight investigation write-ups (25 to 28 October 2026), each worked against a written triage playbook; more in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
