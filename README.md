@@ -40,6 +40,7 @@ A plain-language map of every component is in [notes/lab-map.md](notes/lab-map.m
 |---|---|---|
 | 01 | [Sales user added to Domain Admins](investigations/01-privileged-group-change/) | Detected in 10 minutes, contained, escalated; rule tuned to stop duplicate incidents |
 | 02 | [Password spray from a workstation](investigations/02-password-spray/) | Found by hunting (no rule existed); two accounts compromised, contained; a detection rule was then written and deployed |
+| 03 | [Security log cleared: authorised or breach?](investigations/03-security-log-cleared/) | Investigated across endpoint and cloud; determined benign true positive (authorised admin via Azure Run Command), proven with the Azure Activity Log |
 
 More follow the planted weaknesses: Kerberoasting, AS-REP roasting and misuse of a service account.
 
@@ -63,4 +64,4 @@ notes/          lab map and the fictional company's onboarding pack
 
 ## Status
 
-Built 15 and 16 October 2026. Two investigations written up on 25 and 26 October 2026, each with a detection rule; more in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
+Built 15 and 16 October 2026. Three investigations written up (25 to 28 October 2026); more in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
