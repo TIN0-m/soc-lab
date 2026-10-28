@@ -1,0 +1,8 @@
+// A disabled (dormant) account being re-enabled.
+// MITRE ATT&CK: T1098 Account Manipulation (Persistence)
+// Event 4722 = a user account was enabled. A dormant account coming back to life
+// without a change ticket is a common sign of attacker persistence, or an
+// unauthorised admin action.
+SecurityEvent
+| where EventID == 4722
+| project TimeGenerated, Computer, EnabledAccount = TargetAccount, EnabledBy = SubjectAccount

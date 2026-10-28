@@ -33,6 +33,13 @@ A plain-language map of every component is in [notes/lab-map.md](notes/lab-map.m
 |---|---|---|
 | [Member added to a privileged AD group](detections/privileged-group-change/) | T1098 Account Manipulation | Windows events 4728, 4732, 4756 for Domain Admins, Enterprise Admins and other privileged groups. Deployed as a Sentinel scheduled analytics rule. |
 | [Password spray: one host failing against many accounts](detections/password-spray/) | T1110.003 Password Spraying | Event 4625 grouped by source host; fires when one host fails against 5+ distinct accounts in the window. |
+| [Repeated failed logons for one account](detections/repeated-failed-logons/) | T1110 Brute Force | Event 4625 grouped by target account; fires on 10+ failures for one account. |
+| [Dormant account re-enabled](detections/dormant-account-reenabled/) | T1098 Account Manipulation | Event 4722; a disabled account being switched back on. |
+| [Security audit log cleared](detections/security-log-cleared/) | T1070.001 Clear Windows Event Logs | Event 1102; the Security log being wiped. |
+
+## How alerts are worked
+
+Every alert is triaged against a written [triage playbook](TRIAGE-PLAYBOOK.md): a 7-step flow, the evidence rules, and the three pivots (process tree, command line, Azure Activity Log). Fast Tier 1 calls are recorded in the [shift log](shift-log.md); the deeper cases get a full investigation below.
 
 ## Investigations
 
@@ -60,8 +67,10 @@ detections/     one folder per detection: the KQL and the script that deploys it
 evidence/       query results and screenshots showing the lab running
 investigations/ one folder per case: timeline, queries, verdict, containment, escalation
 notes/          lab map and the fictional company's onboarding pack
+TRIAGE-PLAYBOOK.md   step-by-step alert triage flow and golden rules
+shift-log.md         Tier 1 triage log (fast calls); investigations/ holds the deep ones
 ```
 
 ## Status
 
-Built 15 and 16 October 2026. Three investigations written up (25 to 28 October 2026); more in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
+Built 15 and 16 October 2026. Five detection rules, three investigations and a shift log (25 to 28 October 2026), worked against a written triage playbook; more in progress. The lab is torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.

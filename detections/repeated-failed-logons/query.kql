@@ -1,0 +1,10 @@
+// Many failed logons against a SINGLE account (possible brute force).
+// MITRE ATT&CK: T1110 Brute Force (Credential Access)
+// Event 4625 = failed logon. Many failures for one account is brute force, as
+// opposed to a spray (many accounts, few failures each). Counts by target
+// account and fires past a threshold.
+SecurityEvent
+| where EventID == 4625
+| summarize Failures = count(), Sources = make_set(Computer, 10),
+    StartTime = min(TimeGenerated), EndTime = max(TimeGenerated) by TargetAccount
+| where Failures >= 10
