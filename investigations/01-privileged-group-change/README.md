@@ -8,7 +8,7 @@
 | **MITRE ATT&CK** | T1098 Account Manipulation (Persistence, Privilege Escalation); T1078.002 Valid Accounts: Domain Accounts |
 | **Verdict** | True positive: unapproved change, contained |
 | **Analyst** | Tinotenda Masendeke |
-| **Exercise** | The "attacker" step was run on purpose to test the detection end to end. Everything below is from the lab's real logs. |
+| **Exercise** | The "attacker" step was run on purpose to test the detection from attack to alert. Everything below is from the lab's real logs. |
 
 Times are UTC as Sentinel stores them, with South African time (SAST, UTC+2) where it matters.
 

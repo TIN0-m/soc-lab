@@ -78,4 +78,4 @@ Evidence screenshots: `11-sentinel-first-query.png`, `12-defender-servers-plan2.
 
 ## Next
 
-05: First detection end to end. Simulate a technique on WS01, find it in Sentinel with KQL, turn the query into an analytics rule, and confirm it raises an incident.
+05: First detection, start to finish. Simulate a technique on WS01, find it in Sentinel with KQL, turn the query into an analytics rule, and confirm it raises an incident.
