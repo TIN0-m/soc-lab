@@ -4,8 +4,6 @@ A security operations lab I built in Azure to practise SOC analyst work: collect
 
 The lab is a fictional 19-person company, Lowveld Logistics, with an Active Directory domain, a workstation, ordinary staff accounts, and some weaknesses left in on purpose. I run attacks against it from inside the lab, detect them in Sentinel and Defender, and write them up.
 
-Everything is built with scripts, so the whole lab can be rebuilt or torn down in one go.
-
 ## What's built
 
 | Step | What it adds | Docs |
@@ -50,14 +48,10 @@ A plain map of every component is in [notes/lab-map.md](notes/lab-map.md). The c
 ## Repository layout
 
 ```
-build/          numbered build scripts (bash + Azure CLI) and a write-up for each step
+build/          numbered build steps (bash + Azure CLI) and a write-up for each step
 build/scripts/  PowerShell run on the servers, plus ingestion and KQL helpers
 detections/     one folder per detection: the KQL and the script that deploys it
 evidence/       query results and screenshots showing the lab running
 investigations/ one folder per case: timeline, queries, verdict, containment, escalation
 notes/          lab map and the company's onboarding pack
 ```
-
-## Status
-
-Built 15 to 16 October 2026. Eight investigation write-ups, plus five Sentinel detection rules. The lab gets torn down by 14 November 2026, when the trial credit and the Defender trial end; the scripts and write-ups stay here.
