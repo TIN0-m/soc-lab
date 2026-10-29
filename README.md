@@ -37,6 +37,7 @@ A plain map of every component is in [notes/lab-map.md](notes/lab-map.md). The c
 | 06 | [Brute force against one account](investigations/06-brute-force-single-account/) | True positive that failed; 15 attempts in 21s, no successful logon, no compromise |
 | 07 | [Failed logons for a service account](investigations/07-service-account-failed-logons/) | Benign; a service account failing from the DC, a stale credential rather than an attack |
 | 08 | [User added to a privileged group](investigations/08-backup-operators-change/) | Held High until proven; a SYSTEM-initiated group change confirmed authorised via the Azure Activity Log |
+| 09 | [User-reported phishing email](investigations/09-phishing-email/) | True positive; credential-phish impersonating Microsoft 365, called on header and SPF/DKIM/DMARC analysis |
 
 ## Design choices worth knowing
 
